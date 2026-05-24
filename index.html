@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>NUESTRO UNIVERSO ✨</title>
+    <title>NUESTRO UNIVERSO</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
     
     <style>
@@ -30,7 +30,7 @@
         #intro-screen {
             position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
             background: radial-gradient(circle at center, rgba(30,10,20,0.8) 0%, rgba(0,0,0,1) 100%);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 100; transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -46,19 +46,19 @@
         #btn-enter {
             padding: 12px 45px; font-size: 1rem; font-weight: 300; background: transparent; color: var(--accent);
             border: 1px solid rgba(255, 179, 198, 0.4); border-radius: 50px; cursor: pointer; transition: all 0.5s ease; 
-            font-family: inherit; letter-spacing: 4px;
+            font-family: inherit; letter-spacing: 4px; box-shadow: 0 0 20px rgba(255, 179, 198, 0.1);
             opacity: 0; animation: fadeIn 3s ease forwards 1.5s;
         }
 
         #btn-enter:hover { background: rgba(255, 179, 198, 0.1); border-color: var(--primary); box-shadow: var(--text-glow); transform: scale(1.05); }
 
-        /* Tarjeta de Mensaje Mejorada con espacio para foto */
+        /* Tarjeta de Mensaje (Holográfica) */
         #message-card {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -40%) scale(0.95);
-            width: 85%; max-width: 500px; padding: 30px; text-align: center;
-            background: linear-gradient(135deg, rgba(25, 10, 15, 0.95) 0%, rgba(10, 5, 10, 0.98) 100%);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 179, 198, 0.3); border-radius: 30px;
+            width: 85%; max-width: 500px; padding: 40px 35px; text-align: center;
+            background: linear-gradient(135deg, rgba(25, 10, 15, 0.85) 0%, rgba(10, 5, 10, 0.95) 100%);
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 179, 198, 0.4); border-radius: 30px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 30px rgba(255, 179, 198, 0.1);
             z-index: 50; opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
@@ -67,42 +67,43 @@
 
         #card-photo {
             width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
-            margin: 0 auto 15px; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(255,179,198,0.5);
+            margin: 0 auto 15px; border: 3px solid var(--primary); box-shadow: 0 0 20px rgba(255,179,198,0.6);
             display: block;
         }
 
-        #card-icon { font-size: 2.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 20px rgba(255,179,198,0.8)); }
+        #card-icon { font-size: 2.8rem; margin-bottom: 10px; filter: drop-shadow(0 0 20px rgba(255,179,198,0.8)); }
 
         #card-title {
             font-family: 'Montserrat', sans-serif; font-size: 1rem; letter-spacing: 3px; 
-            color: var(--primary); margin-bottom: 10px; text-transform: uppercase; font-weight: 600;
+            color: var(--primary); margin-bottom: 12px; text-transform: uppercase; font-weight: 500;
         }
 
         #card-text { 
-            font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; line-height: 1.4; 
-            font-weight: 300; margin-bottom: 25px; color: #fff;
+            font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; line-height: 1.4; 
+            font-weight: 300; margin-bottom: 30px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         #btn-close {
             background: transparent; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
-            padding: 10px 30px; border-radius: 30px; cursor: pointer; font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem; letter-spacing: 2px; transition: 0.4s;
+            padding: 8px 28px; border-radius: 30px; cursor: pointer; font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem; letter-spacing: 2px; transition: 0.4s; font-weight: 300;
         }
 
-        #btn-close:hover { background: rgba(255,255,255,0.05); border-color: #fff; color: #fff; }
+        #btn-close:hover { background: rgba(255,255,255,0.05); border-color: #fff; color: #fff; box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 
+        /* Crosshair / Indicador de interacción */
         #crosshair {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.3);
-            z-index: 40; pointer-events: none; transition: 0.3s ease;
+            width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3);
+            z-index: 40; pointer-events: none; transition: 0.2s ease;
         }
-        #crosshair.active { background: rgba(255,255,255,1); box-shadow: 0 0 15px var(--primary); transform: translate(-50%, -50%) scale(2); }
+        #crosshair.active { background: rgba(255,255,255,1); box-shadow: 0 0 15px var(--primary); transform: translate(-50%, -50%) scale(1.5); }
 
         /* Loader */
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 200; display: flex; justify-content: center; align-items: center;
-            color: var(--primary); font-family: monospace; font-size: 1.2rem;
+            background: #030102; z-index: 200; display: flex; justify-content: center; align-items: center;
+            color: var(--primary); font-family: monospace; font-size: 1.2rem; letter-spacing: 2px;
         }
     </style>
 
@@ -152,43 +153,47 @@
                 const texto = await response.text();
                 const lineas = texto.split('\n').filter(linea => linea.trim() && !linea.startsWith('#'));
                 
+                if (lineas.length === 0) throw new Error('Archivo vacío');
+                
                 return lineas.map((linea, i) => {
                     const partes = linea.split('|');
                     return {
                         id: i,
-                        title: partes[0]?.trim() || "Algo especial",
-                        message: partes[1]?.trim() || "Eres increíble",
+                        title: partes[0]?.trim() || "Recuerdo especial",
+                        message: partes[1]?.trim() || "Eres parte importante de mi universo",
                         emoji: partes[2]?.trim() || "✨",
-                        fotoIndex: i % 20 + 1 // Cicla entre foto1.jpg hasta foto20.jpg
+                        fotoIndex: (i % 20) + 1
                     };
                 });
             } catch (error) {
-                console.error('Error cargando frases:', error);
-                // Frases de respaldo si no carga el archivo
-                return Array(30).fill().map((_, i) => ({
+                console.warn('Usando frases de respaldo');
+                return Array(40).fill().map((_, i) => ({
                     id: i,
                     title: "Momento especial",
-                    message: "Cada momento contigo es único",
-                    emoji: "💕",
+                    message: "Cada instante contigo es único en el universo",
+                    emoji: "💫",
                     fotoIndex: (i % 20) + 1
                 }));
             }
         }
 
         // ==========================================
-        // 🖼️ CREAR ESFERAS CON FOTOS (en lugar de emojis)
+        // 🖼️ CREAR ESFERAS HOLOGRÁFICAS CON FOTO
         // ==========================================
-        function createPhotoSphere(url, emoji, color) {
+        function createHologramSphere(photoUrl, emoji, colorHex) {
             const canvas = document.createElement('canvas');
             canvas.width = 512;
             canvas.height = 512;
             const ctx = canvas.getContext('2d');
 
-            // Fondo circular con gradiente
+            // Centro y radio
             const centerX = 256, centerY = 256, radius = 230;
-            const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.3, centerX, centerY, radius);
-            gradient.addColorStop(0, color);
-            gradient.addColorStop(0.6, color + 'aa');
+            
+            // 1. Gradiente holográfico de fondo
+            const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.2, centerX, centerY, radius);
+            gradient.addColorStop(0, colorHex);
+            gradient.addColorStop(0.4, colorHex + 'cc');
+            gradient.addColorStop(0.7, colorHex + '66');
             gradient.addColorStop(1, 'rgba(0,0,0,0)');
             
             ctx.beginPath();
@@ -196,119 +201,243 @@
             ctx.fillStyle = gradient;
             ctx.fill();
             
-            // Borde brillante
+            // 2. Anillo brillante exterior
             ctx.beginPath();
-            ctx.arc(centerX, centerY, radius - 5, 0, Math.PI * 2);
+            ctx.arc(centerX, centerY, radius - 8, 0, Math.PI * 2);
             ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 4;
             ctx.stroke();
             
-            ctx.shadowBlur = 0;
-            ctx.font = '80px "Apple Color Emoji", "Segoe UI Emoji"';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius - 15, 0, Math.PI * 2);
+            ctx.strokeStyle = colorHex;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            // 3. Emoji grande en el centro (sobresale)
+            ctx.font = '100px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 15;
             ctx.fillStyle = '#ffffff';
             ctx.fillText(emoji, centerX, centerY);
+            ctx.shadowBlur = 0;
             
-            // Cargar foto encima si es posible
+            // 4. Cargar foto (opcional, si existe)
             const img = new Image();
             img.crossOrigin = "Anonymous";
             img.onload = () => {
                 ctx.save();
                 ctx.beginPath();
-                ctx.arc(centerX, centerY, 120, 0, Math.PI * 2);
+                ctx.arc(centerX, centerY, 100, 0, Math.PI * 2);
                 ctx.clip();
-                ctx.drawImage(img, centerX - 120, centerY - 120, 240, 240);
+                ctx.drawImage(img, centerX - 100, centerY - 100, 200, 200);
                 ctx.restore();
                 texture.needsUpdate = true;
             };
-            img.src = url;
+            img.src = photoUrl;
             
             const texture = new THREE.CanvasTexture(canvas);
-            const material = new THREE.SpriteMaterial({ map: texture, transparent: true, blending: THREE.AdditiveBlending });
+            const material = new THREE.SpriteMaterial({ 
+                map: texture, 
+                transparent: true, 
+                blending: THREE.AdditiveBlending,
+                depthTest: true,
+                depthWrite: false
+            });
+            
             const sprite = new THREE.Sprite(material);
-            sprite.scale.set(14, 14, 1);
+            sprite.scale.set(13, 13, 1);
             return sprite;
         }
 
         // ==========================================
-        // 🚀 INICIALIZAR ESCENA
+        // 🚀 INICIALIZAR ESCENA PRINCIPAL
         // ==========================================
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x030102, 0.002);
-        
+        scene.background = new THREE.Color(0x030102);
+        scene.fog = new THREE.FogExp2(0x030102, 0.0015);
+
         const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 2000);
-        camera.position.set(0, 40, 120);
-        
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        camera.position.set(0, 25, 110);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.3;
         container.appendChild(renderer.domElement);
-        
+
+        // Controles con auto-rotación suave
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
         controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.15;
-        controls.maxDistance = 350;
-        controls.minDistance = 25;
-        
-        // Post-procesado
+        controls.autoRotateSpeed = 0.25;
+        controls.enableZoom = true;
+        controls.enablePan = false;
+        controls.maxDistance = 250;
+        controls.minDistance = 35;
+        controls.target.set(0, 0, 0);
+
+        // Post-procesado bloom
         const renderScene = new RenderPass(scene, camera);
-        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.6, 0.2);
-        const composer = new EffectComposer(renderer);
-        composer.addPass(renderScene);
-        composer.addPass(bloomPass);
+        const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.2, 0.5, 0.3);
+        bloomPass.threshold = 0.1;
+        bloomPass.strength = 0.8;
+        bloomPass.radius = 0.5;
+        const effectComposer = new EffectComposer(renderer);
+        effectComposer.addPass(renderScene);
+        effectComposer.addPass(bloomPass);
+
+        // ==========================================
+        // 🌌 AGUJERO NEGRO + DISCO DE ACRECIÓN (ESPIRAL)
+        // ==========================================
         
-        // Agujero negro central
-        const blackHoleGeo = new THREE.SphereGeometry(10, 64, 64);
-        const blackHoleMat = new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0x110000, roughness: 0.1, metalness: 0.9 });
+        // 1. Agujero negro central
+        const blackHoleGeo = new THREE.SphereGeometry(10, 128, 128);
+        const blackHoleMat = new THREE.MeshStandardMaterial({
+            color: 0x000000,
+            emissive: 0x110000,
+            emissiveIntensity: 0.3,
+            roughness: 0.1,
+            metalness: 0.9
+        });
         const blackHole = new THREE.Mesh(blackHoleGeo, blackHoleMat);
         scene.add(blackHole);
         
-        // Anillo de luz alrededor del agujero negro
-        const ringGeo = new THREE.TorusGeometry(12, 0.8, 64, 200);
-        const ringMat = new THREE.MeshStandardMaterial({ color: 0xff6699, emissive: 0xff3366, emissiveIntensity: 1.5 });
-        const ring = new THREE.Mesh(ringGeo, ringMat);
-        scene.add(ring);
+        // 2. Anillo interior brillante
+        const innerRingGeo = new THREE.TorusGeometry(11.5, 0.4, 128, 300);
+        const innerRingMat = new THREE.MeshStandardMaterial({
+            color: 0xff6699,
+            emissive: 0xff3366,
+            emissiveIntensity: 2.0
+        });
+        const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
+        scene.add(innerRing);
         
-        // Partículas de polvo estelar
-        const dustGeo = new THREE.BufferGeometry();
-        const dustCount = 4000;
+        // 3. Disco de acreción ESPIRAL (el elemento original que le da magia)
+        const diskGeometry = new THREE.PlaneGeometry(95, 95, 256, 256);
+        const diskShaderMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0.0 },
+                color1: { value: new THREE.Color(0xffb3c6) },
+                color2: { value: new THREE.Color(0xff3366) }
+            },
+            vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float time;
+                uniform vec3 color1;
+                uniform vec3 color2;
+                varying vec2 vUv;
+                
+                void main() {
+                    vec2 p = vUv * 2.0 - 1.0;
+                    float r = length(p);
+                    float a = atan(p.y, p.x);
+                    
+                    if(r < 0.2) discard;
+                    if(r > 1.0) discard;
+                    
+                    // Patrón espiral dinámico
+                    float spiral = sin(r * 35.0 - time * 3.0 + a * 6.0);
+                    float spiral2 = cos(r * 25.0 + time * 2.0 - a * 5.0);
+                    float intensity = (spiral + spiral2) * 0.6 + 0.4;
+                    
+                    // Brillo que decae con la distancia
+                    float glow = (1.0 - r) * 1.2;
+                    float alpha = intensity * glow * 0.9;
+                    
+                    vec3 finalColor = mix(color2, color1, intensity);
+                    finalColor += vec3(0.8, 0.4, 0.5) * (spiral * 0.3);
+                    
+                    gl_FragColor = vec4(finalColor, alpha);
+                }
+            `,
+            transparent: true,
+            side: THREE.DoubleSide,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        });
+        
+        const accretionDisk = new THREE.Mesh(diskGeometry, diskShaderMaterial);
+        accretionDisk.rotation.x = Math.PI / 2.1;
+        accretionDisk.rotation.z = 0.3;
+        scene.add(accretionDisk);
+        
+        // 4. Partículas de polvo alrededor (efecto estelar)
+        const dustCount = 3000;
+        const dustGeometry = new THREE.BufferGeometry();
         const dustPositions = new Float32Array(dustCount * 3);
         for (let i = 0; i < dustCount; i++) {
-            const radius = 15 + Math.random() * 50;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            dustPositions[i*3] = radius * Math.sin(phi) * Math.cos(theta);
-            dustPositions[i*3+1] = radius * Math.sin(phi) * Math.sin(theta) * 0.5;
-            dustPositions[i*3+2] = radius * Math.cos(phi);
+            const radius = 12 + Math.random() * 35;
+            const angle = Math.random() * Math.PI * 2;
+            const yOffset = (Math.random() - 0.5) * 8;
+            dustPositions[i*3] = Math.cos(angle) * radius;
+            dustPositions[i*3+1] = yOffset;
+            dustPositions[i*3+2] = Math.sin(angle) * radius;
         }
-        dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
-        const dustMat = new THREE.PointsMaterial({ color: 0xff99bb, size: 0.15, transparent: true, blending: THREE.AdditiveBlending });
-        const dustParticles = new THREE.Points(dustGeo, dustMat);
+        dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+        const dustMaterial = new THREE.PointsMaterial({
+            color: 0xff88aa,
+            size: 0.12,
+            transparent: true,
+            blending: THREE.AdditiveBlending
+        });
+        const dustParticles = new THREE.Points(dustGeometry, dustMaterial);
         scene.add(dustParticles);
         
-        // Estrellas lejanas
-        const starGeo = new THREE.BufferGeometry();
-        const starCount = 8000;
+        // 5. Estrellas de fondo lejanas
+        const starCount = 6000;
+        const starGeometry = new THREE.BufferGeometry();
         const starPositions = new Float32Array(starCount * 3);
         for (let i = 0; i < starCount; i++) {
             starPositions[i*3] = (Math.random() - 0.5) * 800;
-            starPositions[i*3+1] = (Math.random() - 0.5) * 400;
-            starPositions[i*3+2] = (Math.random() - 0.5) * 500 - 200;
+            starPositions[i*3+1] = (Math.random() - 0.5) * 500;
+            starPositions[i*3+2] = (Math.random() - 0.5) * 400 - 150;
         }
-        starGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-        const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.2, transparent: true, opacity: 0.6 });
-        const stars = new THREE.Points(starGeo, starMat);
-        scene.add(stars);
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.2,
+            transparent: true,
+            opacity: 0.7
+        });
+        const starsField = new THREE.Points(starGeometry, starMaterial);
+        scene.add(starsField);
         
+        // Pequeñas estrellas brillantes (destellos)
+        const sparkleCount = 1500;
+        const sparkleGeometry = new THREE.BufferGeometry();
+        const sparklePositions = new Float32Array(sparkleCount * 3);
+        for (let i = 0; i < sparkleCount; i++) {
+            sparklePositions[i*3] = (Math.random() - 0.5) * 600;
+            sparklePositions[i*3+1] = (Math.random() - 0.5) * 350;
+            sparklePositions[i*3+2] = (Math.random() - 0.5) * 300 - 100;
+        }
+        sparkleGeometry.setAttribute('position', new THREE.BufferAttribute(sparklePositions, 3));
+        const sparkleMaterial = new THREE.PointsMaterial({
+            color: 0xffccdd,
+            size: 0.1,
+            transparent: true,
+            blending: THREE.AdditiveBlending
+        });
+        const sparkles = new THREE.Points(sparkleGeometry, sparkleMaterial);
+        scene.add(sparkles);
         // ==========================================
-        // 🌟 CREAR ESFERAS FLOTANTES (con fotos)
+        // 💫 CREAR ESFERAS FLOTANTES (con fotos)
         // ==========================================
         const spheres = [];
-        const colores = ['#ffb3c6', '#ff809f', '#ffd1dc', '#ff99b3', '#ffc0d0'];
+        const colores = ['#ffb3c6', '#ff809f', '#ffd1dc', '#ff99b3', '#ffc0d0', '#ffa5c0'];
         
         async function init() {
             const frasesData = await cargarFrases();
@@ -317,44 +446,53 @@
                 const color = colores[index % colores.length];
                 const fotoUrl = `fotos/foto${data.fotoIndex}.jpg`;
                 
-                const sprite = createPhotoSphere(fotoUrl, data.emoji, color);
+                const hologram = createHologramSphere(fotoUrl, data.emoji, color);
                 
-                const angle = (index / frasesData.length) * Math.PI * 2 * 3;
-                const distance = 45 + (Math.random() * 70);
-                const height = (Math.random() - 0.5) * 50;
+                // Posicionamiento en órbita alrededor del centro
+                const orbitRadius = 45 + Math.random() * 65;
+                const orbitSpeed = 0.0006 + Math.random() * 0.0008;
+                const angleOffset = (index / frasesData.length) * Math.PI * 2 * 2.5;
+                const verticalOffset = (Math.random() - 0.5) * 55;
+                const floatSpeed = 1 + Math.random() * 1.5;
                 
-                sprite.position.set(Math.cos(angle) * distance, height, Math.sin(angle) * distance);
-                sprite.userData = {
+                hologram.position.x = Math.cos(angleOffset) * orbitRadius;
+                hologram.position.z = Math.sin(angleOffset) * orbitRadius;
+                hologram.position.y = verticalOffset;
+                
+                hologram.userData = {
                     data: data,
-                    angle: angle,
-                    distance: distance,
-                    baseY: height,
-                    speed: 0.0008 + Math.random() * 0.001,
-                    bobSpeed: 1 + Math.random() * 1.5,
-                    originalScale: 14
+                    orbitRadius: orbitRadius,
+                    orbitSpeed: orbitSpeed,
+                    currentAngle: angleOffset,
+                    baseY: verticalOffset,
+                    floatSpeed: floatSpeed,
+                    originalScale: 13
                 };
                 
-                scene.add(sprite);
-                spheres.push(sprite);
+                scene.add(hologram);
+                spheres.push(hologram);
             });
             
             // Ocultar loader
-            document.getElementById('loader').style.display = 'none';
+            const loader = document.getElementById('loader');
+            if (loader) loader.style.display = 'none';
             
-            // Configurar interacciones
-            setupInteractions(spheres);
-            animate();
+            setupInteractions();
         }
         
         // ==========================================
-        // 🖱️ INTERACCIONES
+        // 🖱️ INTERACCIONES Y RAYCASTER
         // ==========================================
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
         const crosshair = document.getElementById('crosshair');
         const cardModal = document.getElementById('message-card');
+        const cardPhoto = document.getElementById('card-photo');
+        const cardIcon = document.getElementById('card-icon');
+        const cardTitle = document.getElementById('card-title');
+        const cardText = document.getElementById('card-text');
         
-        function setupInteractions(spheresList) {
+        function setupInteractions() {
             window.addEventListener('mousemove', (event) => {
                 mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
                 mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -364,22 +502,24 @@
                 if (cardModal.classList.contains('active')) return;
                 
                 raycaster.setFromCamera(mouse, camera);
-                const intersects = raycaster.intersectObjects(spheresList);
+                const intersects = raycaster.intersectObjects(spheres);
                 
                 if (intersects.length > 0) {
                     const sphere = intersects[0].object;
                     const data = sphere.userData.data;
                     
-                    // Efecto de escala
-                    sphere.scale.set(20, 20, 1);
-                    setTimeout(() => sphere.scale.set(14, 14, 1), 300);
+                    // Efecto visual de pulsación
+                    sphere.scale.set(18, 18, 1);
+                    setTimeout(() => sphere.scale.set(13, 13, 1), 250);
                     
-                    // Mostrar tarjeta con foto
+                    // Actualizar tarjeta
                     const fotoUrl = `fotos/foto${data.fotoIndex}.jpg`;
-                    document.getElementById('card-photo').src = fotoUrl;
-                    document.getElementById('card-icon').innerHTML = data.emoji;
-                    document.getElementById('card-title').innerHTML = data.title;
-                    document.getElementById('card-text').innerHTML = data.message;
+                    cardPhoto.src = fotoUrl;
+                    cardIcon.innerHTML = data.emoji;
+                    cardTitle.innerHTML = data.title;
+                    cardText.innerHTML = data.message;
+                    
+                    // Mostrar con animación
                     cardModal.classList.add('active');
                 }
             });
@@ -390,46 +530,61 @@
         }
         
         // ==========================================
-        // 🎬 ANIMACIÓN
+        // 🎬 ANIMACIÓN Y CICLO DE VIDA
         // ==========================================
         let clock = new THREE.Clock();
         
         function animate() {
             requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
+            const delta = clock.getDelta();
+            const elapsedTime = performance.now() / 1000;
             
+            // Actualizar controles (auto-rotación activa)
             controls.update();
             
-            // Animar anillo del agujero negro
-            ring.rotation.x = Math.sin(elapsedTime * 0.5) * 0.3;
-            ring.rotation.z = elapsedTime * 0.2;
-            ring.rotation.y = elapsedTime * 0.1;
+            // ANIMACIONES DEL CENTRO (AGUJERO NEGRO + ESPIRAL)
+            innerRing.rotation.x = Math.sin(elapsedTime * 0.8) * 0.3;
+            innerRing.rotation.z = elapsedTime * 0.4;
+            innerRing.rotation.y = elapsedTime * 0.15;
             
-            // Animar partículas
-            dustParticles.rotation.y = elapsedTime * 0.05;
-            stars.rotation.y = elapsedTime * 0.01;
+            // Disco de acreción: tiempo para la espiral
+            if (accretionDisk.material.uniforms) {
+                accretionDisk.material.uniforms.time.value = elapsedTime;
+            }
+            accretionDisk.rotation.z = elapsedTime * 0.08;
             
-            // Animar esferas
-            spheres.forEach((sphere) => {
+            // Polvo estelar girando lentamente
+            dustParticles.rotation.y = elapsedTime * 0.1;
+            dustParticles.rotation.x = Math.sin(elapsedTime * 0.2) * 0.1;
+            
+            // Estrellas de fondo muy lento
+            starsField.rotation.y = elapsedTime * 0.01;
+            sparkles.rotation.y = elapsedTime * 0.02;
+            
+            // ANIMACIÓN DE LAS ESFERAS FLOTANTES
+            spheres.forEach(sphere => {
                 const ud = sphere.userData;
                 if (ud) {
-                    ud.angle += ud.speed;
-                    sphere.position.x = Math.cos(ud.angle) * ud.distance;
-                    sphere.position.z = Math.sin(ud.angle) * ud.distance;
-                    sphere.position.y = ud.baseY + Math.sin(elapsedTime * ud.bobSpeed) * 2.5;
+                    // Movimiento orbital
+                    ud.currentAngle += ud.orbitSpeed;
+                    sphere.position.x = Math.cos(ud.currentAngle) * ud.orbitRadius;
+                    sphere.position.z = Math.sin(ud.currentAngle) * ud.orbitRadius;
                     
-                    // Pulsación suave
-                    const pulse = ud.originalScale + Math.sin(elapsedTime * 2.5) * 0.8;
-                    if (sphere.scale.x < 21) {
+                    // Flotación vertical suave
+                    sphere.position.y = ud.baseY + Math.sin(elapsedTime * ud.floatSpeed) * 2.8;
+                    
+                    // Pulsación de brillo (escala suave)
+                    const pulse = ud.originalScale + Math.sin(elapsedTime * 2.2) * 0.6;
+                    if (sphere.scale.x < 20) {
                         sphere.scale.set(pulse, pulse, 1);
                     }
                 }
             });
             
-            // Hover effect
+            // DETECCIÓN DE HOVER PARA CROSSHAIR
             raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects(spheres);
-            if (intersects.length > 0) {
+            const hovered = raycaster.intersectObjects(spheres);
+            if (hovered.length > 0) {
                 crosshair.classList.add('active');
                 document.body.style.cursor = 'pointer';
             } else {
@@ -437,38 +592,47 @@
                 document.body.style.cursor = 'default';
             }
             
-            composer.render();
+            // Render con post-procesado
+            effectComposer.render();
         }
         
         // ==========================================
-        // 🚪 INTRO Y RESIZE
+        // 📏 RESIZE Y ENCENDIDO
         // ==========================================
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
-        });
+            effectComposer.setSize(window.innerWidth, window.innerHeight);
+        }
         
+        // Evento de entrada
         document.getElementById('btn-enter').addEventListener('click', () => {
             const intro = document.getElementById('intro-screen');
             intro.style.opacity = '0';
-            setTimeout(() => intro.style.display = 'none', 2500);
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 2500);
             
-            // Zoom in suave
+            // Zoom in suave inicial
             const startZ = camera.position.z;
-            const endZ = 120;
+            const targetZ = 110;
             let startTime = null;
-            function zoomIn(timestamp) {
+            function smoothZoom(timestamp) {
                 if (!startTime) startTime = timestamp;
                 const progress = Math.min(1, (timestamp - startTime) / 2000);
-                camera.position.z = startZ + (endZ - startZ) * progress;
-                if (progress < 1) requestAnimationFrame(zoomIn);
+                camera.position.z = startZ + (targetZ - startZ) * progress;
+                if (progress < 1) {
+                    requestAnimationFrame(smoothZoom);
+                }
             }
-            requestAnimationFrame(zoomIn);
+            requestAnimationFrame(smoothZoom);
         });
         
+        // Iniciar todo
         init();
+        animate();
     </script>
 </body>
 </html>
